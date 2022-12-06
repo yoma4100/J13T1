@@ -59,22 +59,4 @@ public class ManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
-
-    @Test
-    public void shouldRemoveById() {
-        Product[] expected = {product1, product2, product4, product5, product6, product7, product8};
-
-        manager.removeById(100);
-
-        Product[] actual = repo.findAll();
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldThrowException() {
-        Assertions.assertThrows(NotFoundException.class, () -> {
-            manager.removeById(666);
-        });
-    }
 }

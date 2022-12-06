@@ -1,6 +1,5 @@
 package ru.netology.domain;
 
-import ru.netology.NotFoundException;
 import ru.netology.Product;
 import ru.netology.repository.Repository;
 
@@ -16,18 +15,10 @@ public class Manager {
     }
 
     public Product findById(int id) {
-        for (Product product : repo.findAll()) {
-            if (product.getId() == id) {
-                return product;
-            }
-        }
-        return null;
+       return repo.findById(id);
     }
 
     public void removeById(int id) {
-        if (findById(id) == null) {
-            throw new NotFoundException("id не существует");
-        }
         repo.removeById(id);
     }
 
@@ -49,6 +40,4 @@ public class Manager {
             return false;
         }
     }
-
-
 }
